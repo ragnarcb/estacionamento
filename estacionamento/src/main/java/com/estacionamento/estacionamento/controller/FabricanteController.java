@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/fabricantes")
+@RequestMapping("/fabricantes")
 public class FabricanteController {
 
     @Autowired
@@ -29,6 +29,12 @@ public class FabricanteController {
     @PostMapping
     public FabricanteDTO createFabricante(@RequestBody FabricanteDTO fabricanteDTO) {
         return fabricanteService.save(fabricanteDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<FabricanteDTO> updateFabricante(@PathVariable Long id, @RequestBody FabricanteDTO fabricanteDTO) {
+        FabricanteDTO updatedFabricante = fabricanteService.update(id, fabricanteDTO);
+        return updatedFabricante != null ? ResponseEntity.ok(updatedFabricante) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")

@@ -42,6 +42,34 @@ public class FabricanteService {
         return fabricanteMapper.toDTO(fabricante);
     }
 
+    public FabricanteDTO update(Long id, FabricanteDTO fabricanteDTO) {
+        Optional<Fabricante> existingFabricanteOpt = fabricanteRepository.findById(id);
+        if (existingFabricanteOpt.isPresent()) {
+            Fabricante existingFabricante = existingFabricanteOpt.get();
+            
+            // Atualizar os campos que são permitidos.
+            if (fabricanteDTO.getNome() != null) {
+                existingFabricante.setNome(fabricanteDTO.getNome());
+            }
+            if (fabricanteDTO.getEmail() != null) {
+                existingFabricante.setEmail(fabricanteDTO.getEmail());
+            }
+            if (fabricanteDTO.getPais() != null) {
+                existingFabricante.setPais(fabricanteDTO.getPais());
+            }
+            if (fabricanteDTO.getStatusId() != null) {
+                Status status = statusRepository.findById(fabricanteDTO.getStatusId()).orElse(null);
+                existingFabricante.setStatus(status);
+            }
+            
+    
+            Fabricante updatedFabricante = fabricanteRepository.save(existingFabricante);
+            return fabricanteMapper.toDTO(updatedFabricante);
+        } else {
+            return null;  // Ou lance uma exceção personalizada
+        }
+    }
+
     public void delete(Long id) {
         fabricanteRepository.deleteById(id);
     }
