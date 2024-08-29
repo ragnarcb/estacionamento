@@ -1,0 +1,59 @@
+# Estacionamento API
+
+## Descrição
+
+A API para o sistema de estacionamento permite o gerenciamento de fabricantes, modelos, status, tipos e veículos. A API oferece endpoints para criar, ler, atualizar e excluir (CRUD) cada um desses recursos.
+
+## Endpoints
+
+### Fabricante
+
+- <span style="color: green; font-weight: bold;">**POST /fabricantes**:</span> Cria um novo fabricante.
+- <span style="color: blue; font-weight: bold;">**GET /fabricantes**:</span> Retorna uma lista de todos os fabricantes.
+- <span style="color: blue; font-weight: bold;">**GET /fabricantes/{id}**:</span> Retorna o fabricante com o ID especificado.
+- <span style="color: orange; font-weight: bold;">**PUT /fabricantes/{id}**:</span> Atualiza o fabricante com o ID especificado.
+- <span style="color: red; font-weight: bold;">**DELETE /fabricantes/{id}**:</span> Exclui o fabricante com o ID especificado.
+
+### Modelo
+
+- <span style="color: green; font-weight: bold;">**POST /modelos**:</span> Cria um novo modelo.
+- <span style="color: blue; font-weight: bold;">**GET /modelos**:</span> Retorna uma lista de todos os modelos.
+- <span style="color: blue; font-weight: bold;">**GET /modelos/{id}**:</span> Retorna o modelo com o ID especificado.
+- <span style="color: orange; font-weight: bold;">**PUT /modelos/{id}**:</span> Atualiza o modelo com o ID especificado.
+- <span style="color: red; font-weight: bold;">**DELETE /modelos/{id}**:</span> Exclui o modelo com o ID especificado.
+
+### Status
+
+- <span style="color: green; font-weight: bold;">**POST /status**:</span> Cria um novo status.
+- <span style="color: blue; font-weight: bold;">**GET /status**:</span> Retorna uma lista de todos os status.
+- <span style="color: blue; font-weight: bold;">**GET /status/{id}**:</span> Retorna o status com o ID especificado.
+- <span style="color: red; font-weight: bold;">**DELETE /status/{id}**:</span> Exclui o status com o ID especificado.
+
+### Tipo
+
+- <span style="color: green; font-weight: bold;">**POST /tipos**:</span> Cria um novo tipo.
+- <span style="color: blue; font-weight: bold;">**GET /tipos**:</span> Retorna uma lista de todos os tipos.
+- <span style="color: blue; font-weight: bold;">**GET /tipos/{id}**:</span> Retorna o tipo com o ID especificado.
+- <span style="color: orange; font-weight: bold;">**PUT /tipos/{id}**:</span> Atualiza o tipo com o ID especificado.
+- <span style="color: red; font-weight: bold;">**DELETE /tipos/{id}**:</span> Exclui o tipo com o ID especificado.
+
+### Veículo
+
+- <span style="color: green; font-weight: bold;">**POST /veiculos**:</span> Cria um novo veículo.
+- <span style="color: blue; font-weight: bold;">**GET /veiculos**:</span> Retorna uma lista de todos os veículos.
+- <span style="color: blue; font-weight: bold;">**GET /veiculos/{id}**:</span> Retorna o veículo com o ID especificado.
+- <span style="color: orange; font-weight: bold;">**PUT /veiculos/{id}**:</span> Atualiza o veículo com o ID especificado.
+- <span style="color: red; font-weight: bold;">**DELETE /veiculos/{id}**:</span> Exclui o veículo com o ID especificado.
+
+## Swagger
+
+Para testar e visualizar a documentação da API, acesse o Swagger UI em:
+
+[http://localhost:8080/swagger-ui/index.html#/](http://localhost:8080/swagger-ui/index.html#/)
+
+## Configuração
+
+Certifique-se de que todas as dependências estão instaladas e que o projeto está corretamente configurado para executar a API. Para iniciar o servidor, use o comando:
+
+```bash
+./mvnw spring-boot:run
