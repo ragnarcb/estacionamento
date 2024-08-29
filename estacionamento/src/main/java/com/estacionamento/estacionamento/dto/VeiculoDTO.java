@@ -1,32 +1,18 @@
-package com.estacionamento.estacionamento.entities;
+package com.estacionamento.estacionamento.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.estacionamento.estacionamento.entities.Modelo;
 
-@Entity
-@Table(name = "veiculo")
-public class Veiculo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class VeiculoDTO {
+    
     private Long id;
     private String placa;
     private String cor;
-
-    @ManyToOne
-    @JoinColumn(name = "modelo_id")
     private Modelo modelo;
 
-    public Veiculo() {
+    public VeiculoDTO() {
     }
 
-    
-    public Veiculo(Long id, String placa, String cor, Modelo modelo) {
+    public VeiculoDTO(Long id, String placa, String cor, Modelo modelo) {
         this.id = id;
         this.placa = placa;
         this.cor = cor;
@@ -64,6 +50,4 @@ public class Veiculo {
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
-
-    
 }

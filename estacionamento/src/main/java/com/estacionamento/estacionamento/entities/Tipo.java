@@ -19,7 +19,6 @@ public class Tipo {
     public Tipo() {
     }
 
-    
 
     public Tipo(Long id, String nome) {
         this.id = id;
