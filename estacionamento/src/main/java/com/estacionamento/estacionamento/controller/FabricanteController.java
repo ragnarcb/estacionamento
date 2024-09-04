@@ -15,6 +15,18 @@ public class FabricanteController {
     @Autowired
     private FabricanteService fabricanteService;
 
+    @GetMapping("/pais/{pais}")
+    public ResponseEntity<List<FabricanteDTO>> getFabricantesByPais(@PathVariable String pais) {
+        List<FabricanteDTO> fabricantes = fabricanteService.findByPais(pais);
+        return ResponseEntity.ok(fabricantes);
+    }
+
+    @GetMapping("/pais-not/{pais}")
+    public ResponseEntity<List<FabricanteDTO>> getFabricantesByPaisNot(@PathVariable String pais) {
+        List<FabricanteDTO> fabricantes = fabricanteService.findByPaisNot(pais);
+        return ResponseEntity.ok(fabricantes);
+    }
+
     @GetMapping
     public List<FabricanteDTO> getAllFabricantes() {
         return fabricanteService.findAll();

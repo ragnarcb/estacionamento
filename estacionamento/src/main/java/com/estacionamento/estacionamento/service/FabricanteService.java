@@ -30,6 +30,20 @@ public class FabricanteService {
                 .toList();
     }
 
+    public List<FabricanteDTO> findByPais(String pais) {
+        List<Fabricante> fabricantes = fabricanteRepository.findByPais(pais);
+        return fabricantes.stream()
+                .map(fabricanteMapper::toDTO)
+                .toList();
+    }
+
+    public List<FabricanteDTO> findByPaisNot(String pais){
+        List<Fabricante> fabricantes = fabricanteRepository.findByPaisNot(pais);
+        return fabricantes.stream()
+                .map(fabricanteMapper::toDTO)
+                .toList();
+    }
+
     public FabricanteDTO findById(Long id) {
         Optional<Fabricante> fabricante = fabricanteRepository.findById(id);
         return fabricante.map(fabricanteMapper::toDTO).orElse(null);
