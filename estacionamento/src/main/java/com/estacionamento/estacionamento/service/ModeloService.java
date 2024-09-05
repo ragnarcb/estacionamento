@@ -26,6 +26,10 @@ public class ModeloService {
                 .collect(Collectors.toList());
     }
 
+    public List<Modelo> findModelosByFabricantePais(String pais) {
+        return modeloRepository.findModelosByFabricantePais(pais);
+    }
+
     public ModeloDTO findById(Long id) {
         Optional<Modelo> modelo = modeloRepository.findById(id);
         return modelo.map(modeloMapper::toDto).orElse(null);

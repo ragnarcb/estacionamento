@@ -1,6 +1,7 @@
 package com.estacionamento.estacionamento.controller;
 
 import com.estacionamento.estacionamento.dto.ModeloDTO;
+import com.estacionamento.estacionamento.entities.Modelo;
 import com.estacionamento.estacionamento.service.ModeloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,18 @@ public class ModeloController {
         ModeloDTO modeloDTO = modeloService.findById(id);
         return modeloDTO != null ? ResponseEntity.ok(modeloDTO) : ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/fabricante/{pais}")
+    public ResponseEntity<List<Modelo>> findModelosByFabricantePais(@RequestParam String pais) {
+        List<Modelo> modelos = modeloService.findModelosByFabricantePais(pais);
+        if(modelos.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(modelos);
+        }
+    }
+
+
 
     @PostMapping
     public ModeloDTO createModelo(@RequestBody ModeloDTO modeloDTO) {

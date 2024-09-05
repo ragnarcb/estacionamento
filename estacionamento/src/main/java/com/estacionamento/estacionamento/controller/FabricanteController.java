@@ -1,6 +1,7 @@
 package com.estacionamento.estacionamento.controller;
 
 import com.estacionamento.estacionamento.dto.FabricanteDTO;
+import com.estacionamento.estacionamento.entities.Fabricante;
 import com.estacionamento.estacionamento.service.FabricanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,19 @@ public class FabricanteController {
         List<FabricanteDTO> fabricantes = fabricanteService.findByPais(pais);
         return ResponseEntity.ok(fabricantes);
     }
+
+    @GetMapping("/pais-cont/{pais}")
+    public ResponseEntity<List<Fabricante>> getFabricantesByPaisContaining(@RequestParam String pais) {
+        List<Fabricante> fabricantes = fabricanteService.findPaisByContaining(pais);
+        if (fabricantes.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        else {
+            return ResponseEntity.ok(fabricantes);
+        }
+    }
+
+    
 
     @GetMapping("/pais-not/{pais}")
     public ResponseEntity<List<FabricanteDTO>> getFabricantesByPaisNot(@PathVariable String pais) {

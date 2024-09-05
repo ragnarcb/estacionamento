@@ -30,6 +30,10 @@ public class FabricanteService {
                 .toList();
     }
 
+    public List<Fabricante> findPaisByContaining(String pais) {
+        return fabricanteRepository.findByPaisContaining(pais);
+    }
+
     public List<FabricanteDTO> findByPais(String pais) {
         List<Fabricante> fabricantes = fabricanteRepository.findByPais(pais);
         return fabricantes.stream()
